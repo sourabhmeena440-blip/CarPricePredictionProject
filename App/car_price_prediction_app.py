@@ -3,7 +3,7 @@ import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
-def formatted_values(value):
+def formatted_values(value): 
     if value >= 10000000:
         return f"{value/10000000:.2f} Crores"
     
@@ -18,12 +18,12 @@ def formatted_values(value):
 
 @st.cache_resource
 def load_model():
-    with open(r"C:\Users\soura\OneDrive\Desktop\CarPricePredictionProject\saved_models\RandomForestRegressor.pkl", 'rb') as f:
-        model= pickle.load(f)
-    
-    with open(r"C:\Users\soura\OneDrive\Desktop\CarPricePredictionProject\saved_scaling\scaler.pkl", 'rb') as f:
-        scaler= pickle.load(f)
-    
+    with open("saved_models/RandomForestRegressor.pkl", "rb") as f:
+        model = pickle.load(f)
+
+    with open("saved_scaling/scaler.pkl", "rb") as f:
+        scaler = pickle.load(f)
+
     return model, scaler
 
 model, scaler = load_model()
