@@ -131,8 +131,15 @@ try:
         f"💰 Predicted Price: Rs. {formatted_values(prediction)}"
     )
 
-    with st.expander("Model Input Features"):
-        st.write(input_values)
+    #with st.expander("Model Input Features"):
+    #   st.write(input_values)
 
 except Exception as e:
     st.error(f"Error: {e}")
+
+
+st.markdown("---")
+st.caption("🚗 Car Price Prediction App | Developed by Sourabh")
+
+
+
