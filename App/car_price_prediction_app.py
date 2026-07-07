@@ -115,17 +115,24 @@ if st.button("Predict Price", use_container_width=True):
     input_values.extend(transmission_dict[transmission_type])
    # print(input_values)
 
-    try:
-        
-        input_scaled=scaler.transform(input_values)
-        #print(input_scaled)
-        prediction = model.predict(input_values)[0]
+try:
+    import numpy as np
 
-        st.success(
-            f"💰 Predicted Price: Rs. {formatted_values(prediction)}"
-        )
+    # Convert list to 2D array
+    input_array = np.array([input_values])
 
-        with st.expander("Model input features"):
-            st.write(input_values)
-    except Exception as e:
-        st.error(f"Error: {e}")
+    # Scale input
+    input_scaled = scaler.transform(input_array)
+
+    # Predict
+    prediction = model.predict(input_scaled)[0]
+
+    st.success(
+        f"💰 Predicted Price: Rs. {formatted_values(prediction)}"
+    )
+
+    with st.expander("Model Input Features"):
+        st.write(input_values)
+
+except Exception as e:
+    st.error(f"Error: {e}")
